@@ -21,10 +21,7 @@ impl Position {
         }
     }
     fn rotate(&self, mut val: i32) -> Position {
-        // normalize val
-        val %= 360;
-        val += 360;
-        val %= 360;
+        val = val.rem_euclid(360);
         assert!(val % 90 == 0);
         if val == 0 {
             *self
@@ -58,10 +55,7 @@ enum Direction {
 
 impl Direction {
     fn rotate(&self, mut val: i32) -> Direction {
-        // normalize val
-        val %= 360;
-        val += 360;
-        val %= 360;
+        val = val.rem_euclid(360);
         assert!(val % 90 == 0);
         if val == 0 {
             *self
